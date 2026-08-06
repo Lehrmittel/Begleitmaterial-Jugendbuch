@@ -1,14 +1,17 @@
 :root {
-  --forest: #2d4a2b;
-  --forest-dark: #1e331c;
-  --sage: #7d8471;
-  --olive: #a4ac86;
-  --ivory: #faf9f6;
+  /* Palette abgeleitet vom Buchcover "Der Junge in den falschen Schuhen":
+     Türkis/Petrol (Cover-Hintergrund), Lime-Gelb (Titelschrift), Tinte-Schwarz (Innenillustrationen) */
+  --forest: #0b6478;
+  --forest-dark: #07333e;
+  --sage: #1f96ac;
+  --olive: #cdd62c;
+  --ivory: #f7f6f0;
   --white: #ffffff;
-  --sand: #f0ede3;
-  --text: #2c2c28;
-  --text-muted: #5a5c52;
-  --terracotta: #b1603f;
+  --sand: #e6f2f1;
+  --text: #181d1c;
+  --text-muted: #53615d;
+  --terracotta: #9aa61c;
+  --display-font: "Anton", "Helvetica Neue", Arial, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -16,6 +19,8 @@
 body {
   margin: 0;
   background: var(--ivory);
+  background-image: radial-gradient(rgba(11, 100, 120, 0.07) 1px, transparent 1px);
+  background-size: 15px 15px;
   color: var(--text);
   font-family: "Iowan Old Style", "Palatino Linotype", Georgia, "Noto Serif", serif;
   line-height: 1.65;
@@ -49,8 +54,9 @@ a { color: var(--forest); }
 
 .site-nav-brand {
   color: var(--white);
-  font-weight: 700;
-  font-size: 0.92rem;
+  font-family: var(--display-font);
+  font-weight: 400;
+  font-size: 1rem;
   letter-spacing: 0.02em;
   text-decoration: none;
 }
@@ -96,12 +102,13 @@ a { color: var(--forest); }
 }
 
 .doc-title {
-  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-  font-size: 2.1rem;
-  font-weight: 700;
+  font-family: var(--display-font);
+  font-weight: 400;
+  font-size: 2rem;
+  letter-spacing: 0.01em;
   color: var(--forest);
   margin: 0 0 0.5rem;
-  line-height: 1.2;
+  line-height: 1.15;
   border: none;
   padding: 0;
 }
@@ -299,10 +306,14 @@ section.station > h1:first-child {
 }
 
 .hero h1 {
+  font-family: var(--display-font);
+  font-weight: 400;
+  letter-spacing: 0.01em;
   border: none;
   padding: 0;
   margin: 0 0 0.8rem;
-  font-size: 2.3rem;
+  font-size: 2.5rem;
+  color: var(--forest);
 }
 
 .hero p {
@@ -354,7 +365,10 @@ section.station > h1:first-child {
 
 .dossier-card h2 {
   margin: 0 0 0.6rem;
-  font-size: 1.35rem;
+  font-family: var(--display-font);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  font-size: 1.3rem;
   color: var(--forest-dark);
 }
 
@@ -382,4 +396,352 @@ section.station > h1:first-child {
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 0.8rem;
   color: var(--text-muted);
+}
+
+/* -------- Breadcrumb -------- */
+.breadcrumb {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0 0 1.2rem;
+}
+
+.breadcrumb a { color: var(--sage); text-decoration: none; }
+.breadcrumb a:hover { color: var(--forest); text-decoration: underline; }
+.breadcrumb .sep { margin: 0 0.4rem; color: var(--olive); }
+
+/* -------- Section navigation (parts of a chapter group) -------- */
+.section-nav {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin: 0 0 2.4rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--sand);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.section-nav a {
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  background: var(--white);
+  border: 1px solid var(--sand);
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.82rem;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.section-nav a:hover:not(.active) {
+  border-color: var(--olive);
+  color: var(--forest-dark);
+}
+
+.section-nav a.active {
+  background: var(--forest);
+  color: var(--white);
+  border-color: var(--forest);
+}
+
+/* -------- Chapter group cards (subject overview pages) -------- */
+.kg-grid {
+  display: grid;
+  gap: 1rem;
+  margin: 1.4rem 0 2rem;
+}
+
+.kg-card {
+  display: block;
+  background: var(--white);
+  border-radius: 6px;
+  padding: 1.1rem 1.3rem;
+  text-decoration: none;
+  border-left: 3px solid var(--forest);
+  box-shadow: 0 1px 4px rgba(45, 74, 43, 0.08);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.kg-card:hover {
+  transform: translateX(2px);
+  box-shadow: 0 2px 8px rgba(45, 74, 43, 0.13);
+}
+
+.kg-card.kg-card-nmg { border-left-color: var(--terracotta); }
+
+.kg-card-eyebrow {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sage);
+  font-weight: 600;
+  margin: 0 0 0.3rem;
+}
+
+.kg-card h3 {
+  margin: 0 0 0.3rem;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  font-family: var(--display-font);
+  font-size: 1.1rem;
+  color: var(--forest-dark);
+  font-weight: 400;
+}
+
+.kg-card p {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+/* -------- Task boxes (Schülerdossier-Aufgaben) -------- */
+.task-box {
+  background: var(--white);
+  border: 1px solid var(--sand);
+  border-radius: 6px;
+  padding: 1.1rem 1.3rem;
+  margin: 1.2rem 0;
+}
+
+.task-box h3 {
+  margin-top: 0;
+  color: var(--forest);
+}
+
+.task-box p:last-child { margin-bottom: 0; }
+
+.task-quote {
+  font-style: italic;
+  color: var(--text-muted);
+  border-left: 3px solid var(--olive);
+  padding-left: 0.9rem;
+  margin: 0 0 1rem;
+}
+
+/* -------- Leiterspiel cards -------- */
+.game-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.4rem 0;
+}
+
+@media (max-width: 620px) {
+  .game-grid { grid-template-columns: 1fr; }
+}
+
+.game-card {
+  background: var(--white);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 1px 3px rgba(45, 74, 43, 0.08);
+}
+
+.game-card-question {
+  border-top: 4px solid var(--terracotta);
+}
+
+.game-card-solution {
+  border-top: 4px solid var(--forest);
+  background: var(--sand);
+}
+
+.game-card-label {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sage);
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.game-card h3 { margin-top: 0; }
+.game-card p:last-child { margin-bottom: 0; }
+.game-card ul { margin: 0.4rem 0 0; padding-left: 1.2rem; }
+.game-card li { margin-bottom: 0.3rem; }
+
+/* -------- Overview table (NMG Strang-Übersicht) -------- */
+.overview-table td strong { color: var(--forest-dark); }
+
+/* -------- Aufklappbare Einführung -------- */
+.topic-accordion { margin: 0 0 2.6rem; }
+
+.intro-toggle {
+  background: var(--white);
+  border: 1px solid var(--sand);
+  border-radius: 8px;
+  margin: 0 0 0.8rem;
+  overflow: hidden;
+}
+
+.topic-accordion .intro-toggle:last-child { margin-bottom: 0; }
+
+.intro-toggle summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 1.1rem 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--display-font);
+  font-weight: 400;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  color: var(--forest);
+  background: var(--sand);
+}
+
+.intro-toggle summary::-webkit-details-marker { display: none; }
+.intro-toggle summary::marker { content: ""; }
+
+.intro-toggle .toggle-icon {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.85rem;
+  color: var(--sage);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.intro-toggle[open] summary { border-bottom: 1px solid var(--sand); }
+.intro-toggle[open] .toggle-icon { transform: rotate(90deg); }
+
+.intro-toggle-body { padding: 1.6rem 1.4rem 0.2rem; }
+.intro-toggle-body > *:last-child { margin-bottom: 0; }
+
+/* -------- Block-Akkordeon (NMG-Kapitelgruppen) -------- */
+.block-accordion { margin: 1.4rem 0 2rem; }
+
+.block-item {
+  background: var(--white);
+  border: 1px solid var(--sand);
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  overflow: hidden;
+}
+
+.block-item summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 0.9rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--display-font);
+  font-weight: 400;
+  font-size: 0.98rem;
+  letter-spacing: 0.01em;
+  color: var(--forest-dark);
+  background: var(--ivory);
+}
+
+.block-item summary::-webkit-details-marker { display: none; }
+.block-item summary::marker { content: ""; }
+
+.block-item .toggle-icon {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.8rem;
+  color: var(--sage);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.block-item[open] summary { border-bottom: 1px solid var(--sand); }
+.block-item[open] .toggle-icon { transform: rotate(90deg); }
+
+.kg-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.3rem 0;
+}
+
+.kg-list-item {
+  padding: 0.75rem 1.3rem;
+  border-bottom: 1px solid var(--sand);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.kg-list-item:last-child { border-bottom: none; }
+
+.kg-list-item a {
+  color: var(--forest-dark);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.kg-list-item a:hover { text-decoration: underline; color: var(--forest); }
+
+.kg-code {
+  font-weight: 700;
+  color: var(--sage);
+  flex-shrink: 0;
+}
+
+.kg-list-item.kg-disabled { color: var(--text-muted); }
+.kg-list-item.kg-disabled .kg-code { color: var(--text-muted); opacity: 0.7; }
+
+.kg-status {
+  margin-left: auto;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sage);
+  flex-shrink: 0;
+}
+
+/* -------- Prominente Querverweis-Box -------- */
+.crossref-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--forest);
+  color: var(--white);
+  border-radius: 8px;
+  padding: 1.1rem 1.4rem;
+  margin: 0 0 1rem;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.crossref-box:hover { background: var(--forest-dark); }
+
+.crossref-box-icon { font-size: 1.6rem; flex-shrink: 0; }
+
+.crossref-box-text { flex: 1; }
+
+.crossref-box-label {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--olive);
+  margin: 0 0 0.25rem;
+}
+
+.crossref-box-title {
+  font-family: var(--display-font);
+  font-weight: 400;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  margin: 0;
+  color: var(--white);
+}
+
+.crossref-box-arrow {
+  margin-left: auto;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.crossref-note {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin: 0 0 2rem;
 }

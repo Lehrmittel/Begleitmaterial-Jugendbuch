@@ -288,10 +288,11 @@ section.intro > h2:first-child {
 .tip-link + .tip-link { margin-top: -0.4rem; }
 .tip-link:last-of-type { margin-bottom: 1.6rem; }
 
-table .note {
+.table-legend {
   font-size: 0.85em;
   font-style: italic;
   color: var(--text-muted);
+  margin: 0.2rem 0 0.8rem;
 }
 
 /* -------- Tables -------- */
